@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./Home";
+import Home from "./Pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Create from "./Create";
+import Create from "./Pages/Create";
 
 function App() {
   return (

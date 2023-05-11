@@ -1,11 +1,30 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { categories } from "../utils/Dummy";
 
-const AddForm = () => {
+const AddForm = (props) => {
   const [category, setCategory] = useState("");
+  const [buttonBg, setButtonBg] = useState("#3880bc");
+  const [buttonColor, setButtonColor] = useState("#fff");
+  const [buttonBorder, setButtonBorder] = useState("3px solid #fff");
   const setFormValue = (event) => {
     setCategory(event.target.value);
+  };
+  const hover = () => {
+    setButtonBg("#fff");
+    setButtonColor("#3880bc");
+    setButtonBorder("3px solid #3880bc");
+  };
+  const hoverEnd = () => {
+    setButtonBg("#3880bc");
+    setButtonColor("#fff");
+    setButtonBorder("3px solid #fff");
+  };
+  const handleSubmit = () => {
+    if (category === "") {
+    } else {
+      console.log("clicked");
+    }
   };
   return (
     <div className="d-flex justify-content-center align-items-center w-100 vh-100">
@@ -41,16 +60,30 @@ const AddForm = () => {
             </Form.Label>
             <Form.Select onChange={setFormValue} value={category}>
               <option value="">Select Category of Item</option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
+              {categories.map((cat, idx) => (
+                <option key={idx} value={cat}>
                   {cat}
                 </option>
               ))}
             </Form.Select>
           </Form.Group>
+          <Button
+            style={{
+              background: buttonBg,
+              color: buttonColor,
+              border: buttonBorder,
+            }}
+            onMouseEnter={hover}
+            onMouseLeave={hoverEnd}
+            className="fs-5 fw-bolder rounded-4"
+            onClick={handleSubmit}
+          >
+            Add Item
+          </Button>
         </Form>
       </div>
     </div>
   );
 };
 export default AddForm;
+//#3880bc
