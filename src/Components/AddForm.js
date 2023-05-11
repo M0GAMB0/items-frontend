@@ -27,6 +27,9 @@ const AddForm = (props) => {
         category,
       })
     );
+    setName("");
+    setCategory("");
+    setDescription("");
   };
   const hover = () => {
     setButtonBg("#fff");
