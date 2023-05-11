@@ -5,8 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import ItemReducer from "./ItemReducer";
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    items: ItemReducer,
+  },
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

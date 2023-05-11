@@ -6,3 +6,4 @@ const itemSlice = createSlice({
   initialState: itemList,
   reducers: {},
 });
+export default itemSlice.reducer;
