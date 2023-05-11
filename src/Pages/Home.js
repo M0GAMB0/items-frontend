@@ -2,8 +2,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const items = useSelector((state) => state.items);
-  console.log(items);
   const navigate = useNavigate();
   return (
     <div className="container">
