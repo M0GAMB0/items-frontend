@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { getItems } from "../services/item-service";
 
 const View = () => {
   const items = useSelector((state) => state.items);
+  const [itemList, setItemList] = useState([]);
+
+  useEffect(() => {
+    getItems()
+      .then((response) => {
+        console.log(response);
+        setItemList(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("error");
+      });
+  }, []);
+
   return (
     <Container>
       <div className="vh-100 w-100">
@@ -18,9 +33,9 @@ const View = () => {
             </tr>
           </thead>
           <tbody>
-            {items.map((item, idx) => (
+            {itemList.map((item, idx) => (
               <tr key={idx}>
-                <td>{item.id}</td>
+                <td>{idx + 1}</td>
                 <td>{item.name}</td>
                 <td>{item.description}</td>
               </tr>

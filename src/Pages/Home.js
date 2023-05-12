@@ -5,7 +5,6 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div className="container">
-      <h2 className="my-3 text-center">HostBuddy Inc Assignment</h2>
       <div className="d-flex flex-column">
         <button
           type="button"

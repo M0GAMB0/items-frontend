@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../ItemReducer";
-import { add_Item } from "../services/item-service";
+import { add_Item, getItems } from "../services/item-service";
+import { useNavigate } from "react-router-dom";
 
 const AddForm = (props) => {
   const [item, setItem] = useState({
@@ -11,13 +12,16 @@ const AddForm = (props) => {
   });
   const [buttonBg, setButtonBg] = useState("#3880bc");
   const [buttonColor, setButtonColor] = useState("#fff");
+  const [backButtonBg, setBackButtonBg] = useState("#3880bc");
+  const [backButtonColor, setBackButtonColor] = useState("#fff");
   const [buttonBorder, setButtonBorder] = useState("3px solid #fff");
+  const [backButtonBorder, setBackButtonBorder] = useState("3px solid #fff");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const items = useSelector((state) => state.items);
   // console.log(items);
   // const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -29,6 +33,14 @@ const AddForm = (props) => {
       .catch((error) => {
         console.log(error);
         console.log("Error log");
+      });
+    getItems()
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("error");
       });
     setName("");
     setDescription("");
@@ -43,16 +55,26 @@ const AddForm = (props) => {
     setButtonColor("#fff");
     setButtonBorder("3px solid #fff");
   };
+  const hoverback = () => {
+    setBackButtonBg("#fff");
+    setBackButtonColor("#3880bc");
+    setBackButtonBorder("3px solid #3880bc");
+  };
+  const hoverbackEnd = () => {
+    setBackButtonBg("#3880bc");
+    setBackButtonColor("#fff");
+    setBackButtonBorder("3px solid #fff");
+  };
   const handleChangeName = (event) => {
     setItem({ ...item, name: event.target.value });
-    setName(name);
+    setName(event.target.value);
   };
   const handleChangeDescription = (event) => {
     setItem({ ...item, description: event.target.value });
-    setName(description);
+    setDescription(event.target.value);
   };
   return (
-    <div className="d-flex justify-content-center align-items-center w-100 vh-100">
+    <div className="d-flex justify-content-center align-items-center w-100">
       <div
         className="w-0 border p-5 rounded-4 shadow-lg"
         style={{ background: "#003459" }}
@@ -102,19 +124,34 @@ const AddForm = (props) => {
               ))}
             </Form.Select>
           </Form.Group> */}
-          <Button
-            style={{
-              background: buttonBg,
-              color: buttonColor,
-              border: buttonBorder,
-            }}
-            onMouseEnter={hover}
-            onMouseLeave={hoverEnd}
-            className="fs-5 fw-bolder rounded-4"
-            onClick={handleSubmit}
-          >
-            Add Item
-          </Button>
+          <div className="d-flex justify-content-end w-100">
+            <Button
+              style={{
+                background: buttonBg,
+                color: buttonColor,
+                border: buttonBorder,
+              }}
+              onMouseEnter={hover}
+              onMouseLeave={hoverEnd}
+              className="fs-5 fw-bolder rounded-4 mx-3"
+              onClick={handleSubmit}
+            >
+              Add Item
+            </Button>
+            <Button
+              style={{
+                background: backButtonBg,
+                color: backButtonColor,
+                border: backButtonBorder,
+              }}
+              onMouseEnter={hoverback}
+              onMouseLeave={hoverbackEnd}
+              className="fs-5 fw-bolder rounded-4"
+              onClick={(e) => navigate("/")}
+            >
+              Back to Home
+            </Button>
+          </div>
         </Form>
       </div>
     </div>
