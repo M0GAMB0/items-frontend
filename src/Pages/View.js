@@ -15,7 +15,6 @@ const View = () => {
               <th>Id</th>
               <th>Name</th>
               <th>Description</th>
-              <th>Category</th>
             </tr>
           </thead>
           <tbody>
@@ -24,7 +23,6 @@ const View = () => {
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.description}</td>
-                <td>{item.category}</td>
               </tr>
             ))}
           </tbody>

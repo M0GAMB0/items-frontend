@@ -76,7 +76,7 @@ const AddForm = (props) => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-          <Form.Group
+          {/* <Form.Group
             className="mb-3 d-flex w-100 align-items-start justify-content-between mx-5 flex-column flex-md-row align-items-md-center justify-content-md-start"
             controlId="exampleForm.ControlDropdown1"
           >
@@ -91,7 +91,7 @@ const AddForm = (props) => {
                 </option>
               ))}
             </Form.Select>
-          </Form.Group>
+          </Form.Group> */}
           <Button
             style={{
               background: buttonBg,
