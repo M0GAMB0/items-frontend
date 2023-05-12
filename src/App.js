@@ -4,12 +4,13 @@ import Home from "./Pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Create from "./Pages/Create";
 import View from "./Pages/View";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="App w-100">
+    <div className="App">
       <BrowserRouter>
-        <h2 className="my-3 text-center">HostBuddy Inc Assignment</h2>
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/create" element={<Create />}></Route>

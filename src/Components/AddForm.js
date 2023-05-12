@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../ItemReducer";
 import { add_Item, getItems } from "../services/item-service";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddForm = (props) => {
   const [item, setItem] = useState({
@@ -29,6 +30,7 @@ const AddForm = (props) => {
       .then((response) => {
         console.log(response);
         console.log("success log");
+        toast.success("Item added sucessfully");
       })
       .catch((error) => {
         console.log(error);
@@ -44,6 +46,10 @@ const AddForm = (props) => {
       });
     setName("");
     setDescription("");
+    setItem({
+      name: "",
+      description: "",
+    });
   };
   const hover = () => {
     setButtonBg("#fff");
@@ -74,7 +80,7 @@ const AddForm = (props) => {
     setDescription(event.target.value);
   };
   return (
-    <div className="d-flex justify-content-center align-items-center w-100">
+    <div className="d-flex justify-content-center align-items-center w-100 vh-100">
       <div
         className="w-0 border p-5 rounded-4 shadow-lg"
         style={{ background: "#003459" }}
