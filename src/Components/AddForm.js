@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { categories } from "../utils/Dummy";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../ItemReducer";
 import { add_Item } from "../services/item-service";
