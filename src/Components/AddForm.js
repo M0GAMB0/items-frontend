@@ -15,23 +15,12 @@ const AddForm = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const items = useSelector((state) => state.items);
-  console.log(items);
+  // console.log(items);
   // const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // dispatch(
-    //   addItem({
-    //     id: items[items.length - 1].id + 1,
-    //     name,
-    //     description,
-    //     category,
-    //   })
-    // );
-    setItem({
-      name,
-      description,
-    });
+
     add_Item(item)
       .then((response) => {
         console.log(response);
@@ -54,6 +43,14 @@ const AddForm = (props) => {
     setButtonColor("#fff");
     setButtonBorder("3px solid #fff");
   };
+  const handleChangeName = (event) => {
+    setItem({ ...item, name: event.target.value });
+    setName(name);
+  };
+  const handleChangeDescription = (event) => {
+    setItem({ ...item, description: event.target.value });
+    setName(description);
+  };
   return (
     <div className="d-flex justify-content-center align-items-center w-100 vh-100">
       <div
@@ -72,7 +69,7 @@ const AddForm = (props) => {
               type="text"
               placeholder="Enter Item Name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleChangeName}
             />
           </Form.Group>
           <Form.Group
@@ -86,7 +83,7 @@ const AddForm = (props) => {
               as="textarea"
               rows={3}
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={handleChangeDescription}
             />
           </Form.Group>
           {/* <Form.Group
