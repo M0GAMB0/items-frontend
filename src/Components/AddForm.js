@@ -3,9 +3,13 @@ import { Button, Form } from "react-bootstrap";
 import { categories } from "../utils/Dummy";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../ItemReducer";
+import { add_Item } from "../services/item-service";
 
 const AddForm = (props) => {
-  const [category, setCategory] = useState("");
+  const [item, setItem] = useState({
+    name: "",
+    description: "",
+  });
   const [buttonBg, setButtonBg] = useState("#3880bc");
   const [buttonColor, setButtonColor] = useState("#fff");
   const [buttonBorder, setButtonBorder] = useState("3px solid #fff");
@@ -13,22 +17,32 @@ const AddForm = (props) => {
   const [description, setDescription] = useState("");
   const items = useSelector((state) => state.items);
   console.log(items);
-  const dispatch = useDispatch();
-  const setFormValue = (event) => {
-    setCategory(event.target.value);
-  };
+  // const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(
-      addItem({
-        id: items[items.length - 1].id + 1,
-        name,
-        description,
-        category,
+    // dispatch(
+    //   addItem({
+    //     id: items[items.length - 1].id + 1,
+    //     name,
+    //     description,
+    //     category,
+    //   })
+    // );
+    setItem({
+      name,
+      description,
+    });
+    add_Item(item)
+      .then((response) => {
+        console.log(response);
+        console.log("success log");
       })
-    );
+      .catch((error) => {
+        console.log(error);
+        console.log("Error log");
+      });
     setName("");
-    setCategory("");
     setDescription("");
   };
   const hover = () => {
