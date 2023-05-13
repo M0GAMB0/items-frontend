@@ -25,31 +25,36 @@ const AddForm = (props) => {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    add_Item(item)
-      .then((response) => {
-        console.log(response);
-        console.log("success log");
-        toast.success("Item added sucessfully");
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log("Error log");
+    if (name === "") {
+      toast.error("Please enter name");
+    } else if (description === "") {
+      toast.error("Please enter description");
+    } else {
+      add_Item(item)
+        .then((response) => {
+          console.log(response);
+          console.log("success log");
+          toast.success("Item added sucessfully");
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log("Error log");
+        });
+      // getItems()
+      //   .then((response) => {
+      //     console.log(response);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     console.log("error");
+      //   });
+      setName("");
+      setDescription("");
+      setItem({
+        name: "",
+        description: "",
       });
-    getItems()
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log("error");
-      });
-    setName("");
-    setDescription("");
-    setItem({
-      name: "",
-      description: "",
-    });
+    }
   };
   const hover = () => {
     setButtonBg("#fff");
@@ -80,7 +85,7 @@ const AddForm = (props) => {
     setDescription(event.target.value);
   };
   return (
-    <div className="d-flex justify-content-center align-items-center w-100 vh-100">
+    <div className="d-flex justify-content-center align-items-center w-100 my-5">
       <div
         className="w-0 border p-5 rounded-4 shadow-lg"
         style={{ background: "#003459" }}

@@ -1,10 +1,18 @@
 import { myAxios } from "./helper";
 
-export const add_Item = (item) => {
-  return myAxios
-    .post("/api/v1/item/add", item)
-    .then((response) => response.data);
+export const add_Item = async (item) => {
+  const response = await myAxios.post("/api/v1/item/add", item);
+  return response.data;
 };
-export const getItems = () => {
-  return myAxios.get("/api/v1/item/viewAll").then((response) => response.data);
+export const getItems = async () => {
+  const response = await myAxios.get("/api/v1/item/viewAll");
+  return response.data;
+};
+export const searchItems = async (keyword) => {
+  const response = await myAxios.get("/api/v1/item/search-item", {
+    params: {
+      name: keyword,
+    },
+  });
+  return response.data;
 };

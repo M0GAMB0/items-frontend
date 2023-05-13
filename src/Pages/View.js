@@ -25,7 +25,7 @@ const View = () => {
         <h2 className="mt-4">All Items</h2>
         <br />
         <Table striped bordered hover>
-          <thead>
+          <thead style={{ background: "#003459", color: "#fff" }}>
             <tr>
               <th>Id</th>
               <th>Name</th>
