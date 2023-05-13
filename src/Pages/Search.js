@@ -1,14 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  FormControl,
-  InputGroup,
-  Row,
-  Table,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { searchItems } from "../services/item-service";
 
 const Search = () => {

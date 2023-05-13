@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../ItemReducer";
-import { add_Item, getItems } from "../services/item-service";
+import { add_Item } from "../services/item-service";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -19,9 +17,6 @@ const AddForm = (props) => {
   const [backButtonBorder, setBackButtonBorder] = useState("3px solid #fff");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const items = useSelector((state) => state.items);
-  // console.log(items);
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();

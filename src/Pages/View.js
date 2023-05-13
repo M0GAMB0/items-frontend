@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import { getItems } from "../services/item-service";
 
 const View = () => {
-  const items = useSelector((state) => state.items);
   const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
