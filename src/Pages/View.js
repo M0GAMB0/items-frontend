@@ -4,7 +4,7 @@ import { getItems } from "../services/item-service";
 
 const View = () => {
   const [itemList, setItemList] = useState([]);
-
+  //useEffect to fetch list from backend as page get load
   useEffect(() => {
     getItems()
       .then((response) => {
