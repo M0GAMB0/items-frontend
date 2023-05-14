@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <div className="container">
       <div className="d-flex flex-column">
+      //all buttons of home page..
         <button
           type="button"
           className="btn btn-outline-success btn-lg gap-2 col-6 mx-auto my-5"
