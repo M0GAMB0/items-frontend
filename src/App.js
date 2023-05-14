@@ -9,6 +9,7 @@ import Header from "./Components/Header";
 import Search from "./Pages/Search";
 function App() {
   return (
+    //creating routes for all pages using router-dom
     <BrowserRouter>
       <Header />
       <Routes>
